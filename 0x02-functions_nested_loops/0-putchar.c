@@ -1,13 +1,20 @@
-#include <stdio.h>
-int main.h () {
-
+#include "main.h"
 /**
- * _putchar - writes the character c to stdout
- * @c: The character to print
+ * main - main function
  *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
+ * Return: 0;
  */
-int _putchar(char c)
-	return (write(1, &c, 1));
+
+int main(void)
+{
+  char string[] = "_putchar";
+
+  int n;
+
+  for (n = 0; n < 8; n++)
+  {
+    _putchar(string[n]);
+  }
+  _putchar('\n');
+  return (0);
 }
