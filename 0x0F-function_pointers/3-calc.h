@@ -1,55 +1,27 @@
+#ifndef CALC_H
+#define CALC_H
+
 #include <stdio.h>
-#include "function_pointers.h"
+#include <stdlib.h>
+#include <string.h>
 
 /**
- * is_98 - check if a number is equal to 98
- * @elem: the integer to check
+ * struct op - Struct op
  *
- * Return: 0 if false, something else otherwise.
+ * @op: The operator
+ * @f: The function associated
  */
-int is_98(int elem)
+typedef struct op
 {
-    return (98 == elem);
-}
+	char *op;
+	int (*f)(int a, int b);
+} op_t;
 
-/**
- * is_strictly_positive - check if a number is greater than 0
- * @elem: the integer to check
- *
- * Return: 0 if false, something else otherwise.
- */
-int is_strictly_positive(int elem)
-{
-    return (elem > 0);
-}
+int op_add(int a, int b);
+int op_sub(int a, int b);
+int op_mul(int a, int b);
+int op_div(int a, int b);
+int op_mod(int a, int b);
+int (*get_op_func(char *s))(int, int);
 
-
-/**
- * abs_is_98 - check if the absolute value of a number is 98
- * @elem: the integer to check
- *
- * Return: 0 if false, something else otherwise.
- */
-int abs_is_98(int elem)
-{
-    return (elem == 98 || -elem == 98);
-}
-
-/**
- * main - check the code
- *
- * Return: Always 0.
- */
-int main(void)
-{
-    int array[20] = {0, -98, 98, 402, 1024, 4096, -1024, -98, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 98};
-    int index;
-
-    index = int_index(array, 20, is_98);
-    printf("%d\n", index);
-    index = int_index(array, 20, abs_is_98);
-    printf("%d\n", index);
-    index = int_index(array, 20, is_strictly_positive);
-    printf("%d\n", index);
-    return (0);
-}
+#endif
